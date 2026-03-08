@@ -72,7 +72,8 @@ Switched to a stable LAN connection.
 
 * **Check IP address:**
   ```bash
-  ip a  
+  ip a
+  ```
 Static IP via Deco:
 
 Jetson MAC address: <your-MAC-address>
