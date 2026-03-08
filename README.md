@@ -72,7 +72,7 @@ Switched to a stable LAN connection.
 
 * **Check IP address:**
   ```bash
-  ip a  # Example: 192.168.68.115
+  ip a  
 Static IP via Deco:
 
 Jetson MAC address: 4c:bb:47:62:14:60
@@ -85,7 +85,7 @@ SSH Workflow
 After LAN setup, development is performed through SSH, removing the need for serial or USB connections.
 
 Bash
-ssh namuk@192.168.68.115
+ssh namuk@<IP Address>
 📦 JetPack / CUDA / TensorRT Setup
 1. Update System
 Bash
