@@ -42,8 +42,8 @@ The goal of this repository is to build a reproducible Jetson environment for fu
 
 ```bash
 nvcc --version
+```
 
----
 
 ## CUDA Verification
 jetson-orin-nano-lab
