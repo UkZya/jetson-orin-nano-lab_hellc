@@ -74,3 +74,11 @@ scripts/            Verification scripts
 troubleshooting/    Issues encountered during setup
 ```
 ---
+
+### GPU monitoring
+
+Jetson Orin Nano supports both `nvidia-smi` and `tegrastats`.
+
+```bash
+nvidia-smi
+sudo tegrastats
