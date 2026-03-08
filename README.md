@@ -42,3 +42,26 @@ The goal of this repository is to build a reproducible Jetson environment for fu
 
 ```bash
 nvcc --version
+
+
+jetson-orin-nano-lab
+│
+├── README.md
+│
+├── docs
+│   ├── 01_flash_jetson_linux.md
+│   ├── 02_headless_setup_serial.md
+│   ├── 03_usb_networking_windows_ics.md
+│   ├── 04_lan_setup_and_static_ip.md
+│   ├── 05_jetpack_cuda_tensorrt_install.md
+│   └── 06_pytorch_cuda_setup.md
+│
+├── scripts
+│   ├── verify_cuda.sh
+│   ├── verify_torch_cuda.py
+│   └── system_info.sh
+│
+└── troubleshooting
+    ├── torch_cuda_errors.md
+    ├── jetson_networking_issues.md
+    └── pip_wheel_problems.md
