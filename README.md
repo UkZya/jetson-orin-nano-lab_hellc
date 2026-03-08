@@ -73,4 +73,4 @@ docs/               Setup documentation
 scripts/            Verification scripts
 troubleshooting/    Issues encountered during setup
 ```
-
+---
