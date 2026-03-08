@@ -1,10 +1,13 @@
 # Jetson Orin Nano Lab
 
+![KakaoTalk_20260309_003747846](https://github.com/user-attachments/assets/a66a3d3d-9b9b-473e-b4c9-3fb43e4cf3d8)
+
 This repository documents the bring-up process of a Jetson Orin Nano 8GB developer kit and the setup of an edge AI development environment using NVIDIA JetPack, CUDA, TensorRT, and PyTorch.
 
 The goal of this repository is to build a reproducible Jetson environment for future edge AI experiments such as TensorRT optimization and perception pipelines.
 
 ---
+
 
 ## Hardware
 
