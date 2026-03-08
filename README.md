@@ -45,7 +45,9 @@ nvcc --version
 ```
 
 
-## CUDA Verification
+## Folder Structure
+
+```bash
 jetson-orin-nano-lab
 │
 ├── README.md
