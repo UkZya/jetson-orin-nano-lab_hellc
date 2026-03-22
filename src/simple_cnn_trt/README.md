@@ -14,46 +14,46 @@ Pipeline:
 
 Simple CNN
 
-- Input shape: \`1 x 3 x 224 x 224\`
-- Precision: \`FP16\`
+- Input shape: `1 x 3 x 224 x 224`
+- Precision: `FP16`
 
 ---
 
 ## Export
 
-\`\`\`bash
+```bash
 python3 export_model.py
-\`\`\`
+```
 
 Output:
 
-\`\`\`text
+```text
 models/simple_cnn.onnx
-\`\`\`
+```
 
 ---
 
 ## TensorRT Engine
 
-\`\`\`bash
+```bash
 trtexec \\
   --onnx=models/simple_cnn.onnx \\
   --saveEngine=engines/simple_cnn_fp16.engine \\
   --fp16
-\`\`\`
+```
 
 ---
 
 ## Benchmark
 
-\`\`\`bash
+```bash
 trtexec \\
   --loadEngine=engines/simple_cnn_fp16.engine \\
   --warmUp=1000 \\
   --duration=10 \\
   --iterations=50 \\
   --useCudaGraph
-\`\`\`
+```
 
 ---
 
