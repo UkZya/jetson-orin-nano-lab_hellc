@@ -1,4 +1,3 @@
-
 # Simple CNN TensorRT Benchmark
 
 ## Goal
@@ -7,9 +6,7 @@ Validate TensorRT inference pipeline on Jetson Orin Nano.
 
 Pipeline:
 
-
-PyTorch → ONNX → TensorRT → Benchmark
-
+**PyTorch → ONNX → TensorRT → Benchmark**
 
 ---
 
@@ -17,17 +14,8 @@ PyTorch → ONNX → TensorRT → Benchmark
 
 Simple CNN
 
-Input shape:
-
-
-1 x 3 x 224 x 224
-
-
-Precision:
-
-
-FP16
-
+- Input shape: `1 x 3 x 224 x 224`
+- Precision: `FP16`
 
 ---
 
