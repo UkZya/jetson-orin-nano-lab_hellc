@@ -1,4 +1,4 @@
-📄 👉 한 번에 복사용 (여기부터 끝까지 드래그)
+
 # Simple CNN TensorRT Benchmark
 
 ## Goal
