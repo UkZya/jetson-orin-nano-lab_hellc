@@ -210,4 +210,4 @@ __marimo__/
 *.engine
 *.onnx
 __pycache__/
-*.pyc
+*.pycMiniforge3-Linux-aarch64.sh
