@@ -211,3 +211,4 @@ __marimo__/
 *.onnx
 __pycache__/
 *.pycMiniforge3-Linux-aarch64.sh
+Miniforge3-Linux-aarch64.sh
