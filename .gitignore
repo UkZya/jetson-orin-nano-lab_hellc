@@ -210,7 +210,7 @@ __marimo__/
 *.engine
 *.onnx
 __pycache__/
-*.pycMiniforge3-Linux-aarch64.sh
+*.pyc
 Miniforge3-Linux-aarch64.sh
 
 # Jetson lab: model weights, sample media, run outputs (keep benchmark logs)
