@@ -35,6 +35,38 @@ Benchmarking and profiling results for **YOLOv8n** across multiple inference bac
 
 ---
 
+## 🎬 Video Benchmark: Power Mode & TensorRT
+
+End-to-end test on a video file (`predict()` per frame, including pre/post-processing), comparing PyTorch (FP16) vs. TensorRT engine under two `nvpmodel` power modes.
+
+![YOLOv8n latency: 15W vs MAXN_SUPER](assets/bench_power_mode.svg)
+
+| Model | Metric | 15W | MAXN_SUPER | Diff |
+|---|---|---|---|---|
+| `yolov8n.pt` (FP16) | End-to-end | 29.1 ms (34.4 FPS) | 25.7 ms (39.0 FPS) | MAXN_SUPER ~13% faster |
+| `yolov8n.pt` (FP16) | Inference only | 21.7 ms | 19.0 ms | ~12% faster |
+| `yolov8n.engine` (TensorRT) | End-to-end | 25.4 ms (39.4 FPS) | 25.4 ms (39.3 FPS) | no difference |
+| `yolov8n.engine` (TensorRT) | Inference only | 11.9 ms | 11.8 ms | no difference |
+
+**Takeaways**
+*   TensorRT cuts pure inference time by ~1.6x (19.0 → 11.8 ms on MAXN_SUPER), but end-to-end time barely changes because CPU-side pre/post-processing (~14 ms) dominates.
+*   PyTorch benefits from MAXN_SUPER (~12-13%), while the TensorRT engine runs the same in 15W and MAXN_SUPER. For a small model like YOLOv8n, 15W is enough, with roughly half the power and heat.
+*   These numbers come from a different script and input than the tables below (`trtexec` / profiler runs), so they are not directly comparable with them.
+
+**Setup:** Jetson Orin Nano 8GB Super, JetPack 6.2.1 (L4T R36.4.7), CUDA 12.6, TensorRT 10.3, rootfs on NVMe SSD, `jetson_clocks` off.
+Input: `videos/person-bicycle-car-detection.mp4` (768x432), 300 frames, 20 warm-up frames. Single run per mode (expect about ±1 ms noise).
+
+**Reproduce** (from the repository root)
+```bash
+sudo nvpmodel -m 0   # 15W  (-m 2 for MAXN_SUPER)
+PYTHONPATH=~/trt_shim python src/bench_yolo.py yolov8n.pt yolov8n.engine \
+    --source videos/person-bicycle-car-detection.mp4 | tee runs/bench_15w.log
+python src/yolo_v8/plot_bench.py   # regenerate the chart from runs/bench_*.log
+```
+Raw logs: [`runs/bench_15w.log`](../../runs/bench_15w.log), [`runs/bench_maxn_super.log`](../../runs/bench_maxn_super.log) · Scripts: [`src/bench_yolo.py`](../bench_yolo.py), [`plot_bench.py`](plot_bench.py)
+
+---
+
 ## 📊 PyTorch Stage-wise Breakdown
 
 > Full pipeline: preprocess → inference → postprocess

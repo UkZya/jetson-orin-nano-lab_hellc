@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">YOLOv8n latency by power mode</title>
+<desc id="d">Grouped bars of end-to-end and inference-only latency in ms (lower is better) for PyTorch FP16 and TensorRT under 15W and MAXN_SUPER.</desc>
+<rect width="720" height="330" rx="8" fill="#fcfcfb"/>
+<text x="32" y="30" font-size="16" font-weight="600" fill="#0b0b0b">YOLOv8n latency: 15W vs MAXN_SUPER (ms, lower is better)</text>
+<rect x="32" y="46" width="12" height="12" rx="2" fill="#2a78d6"/><text x="50" y="57" font-size="12" fill="#52514e">PyTorch (FP16)</text><rect x="182" y="46" width="12" height="12" rx="2" fill="#eb6834"/><text x="200" y="57" font-size="12" fill="#52514e">TensorRT engine</text>
+<text x="32" y="72" font-size="14" font-weight="600" fill="#0b0b0b">End-to-end</text>
+<line x1="76" y1="280.0" x2="348" y2="280.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="68" y="284.0" font-size="11" text-anchor="end" fill="#52514e">0</text>
+<line x1="76" y1="234.0" x2="348" y2="234.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="68" y="238.0" font-size="11" text-anchor="end" fill="#52514e">10</text>
+<line x1="76" y1="188.0" x2="348" y2="188.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="68" y="192.0" font-size="11" text-anchor="end" fill="#52514e">20</text>
+<line x1="76" y1="142.0" x2="348" y2="142.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="68" y="146.0" font-size="11" text-anchor="end" fill="#52514e">30</text>
+<line x1="76" y1="96.0" x2="348" y2="96.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="68" y="100.0" font-size="11" text-anchor="end" fill="#52514e">40</text>
+<path d="M119.0,280 V150.14 a4,4 0 0 1 4,-4 H139.0 a4,4 0 0 1 4,4 V280 Z" fill="#2a78d6"/>
+<text x="131.0" y="140.14" font-size="11" text-anchor="middle" fill="#0b0b0b">29.1</text>
+<path d="M145.0,280 V167.16000000000003 a4,4 0 0 1 4,-4 H165.0 a4,4 0 0 1 4,4 V280 Z" fill="#eb6834"/>
+<text x="157.0" y="157.16000000000003" font-size="11" text-anchor="middle" fill="#0b0b0b">25.4</text>
+<text x="144.0" y="300" font-size="12" text-anchor="middle" fill="#52514e">15W</text>
+<path d="M255.0,280 V165.78 a4,4 0 0 1 4,-4 H275.0 a4,4 0 0 1 4,4 V280 Z" fill="#2a78d6"/>
+<text x="267.0" y="155.78" font-size="11" text-anchor="middle" fill="#0b0b0b">25.7</text>
+<path d="M281.0,280 V167.16000000000003 a4,4 0 0 1 4,-4 H301.0 a4,4 0 0 1 4,4 V280 Z" fill="#eb6834"/>
+<text x="293.0" y="157.16000000000003" font-size="11" text-anchor="middle" fill="#0b0b0b">25.4</text>
+<text x="280.0" y="300" font-size="12" text-anchor="middle" fill="#52514e">MAXN_SUPER</text>
+<line x1="76" y1="280" x2="348" y2="280" stroke="#e4e3df" stroke-width="1"/>
+<text x="372" y="72" font-size="14" font-weight="600" fill="#0b0b0b">Inference only</text>
+<line x1="416" y1="280.0" x2="688" y2="280.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="408" y="284.0" font-size="11" text-anchor="end" fill="#52514e">0</text>
+<line x1="416" y1="234.0" x2="688" y2="234.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="408" y="238.0" font-size="11" text-anchor="end" fill="#52514e">10</text>
+<line x1="416" y1="188.0" x2="688" y2="188.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="408" y="192.0" font-size="11" text-anchor="end" fill="#52514e">20</text>
+<line x1="416" y1="142.0" x2="688" y2="142.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="408" y="146.0" font-size="11" text-anchor="end" fill="#52514e">30</text>
+<line x1="416" y1="96.0" x2="688" y2="96.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="408" y="100.0" font-size="11" text-anchor="end" fill="#52514e">40</text>
+<path d="M459.0,280 V184.18 a4,4 0 0 1 4,-4 H479.0 a4,4 0 0 1 4,4 V280 Z" fill="#2a78d6"/>
+<text x="471.0" y="174.18" font-size="11" text-anchor="middle" fill="#0b0b0b">21.7</text>
+<path d="M485.0,280 V229.26 a4,4 0 0 1 4,-4 H505.0 a4,4 0 0 1 4,4 V280 Z" fill="#eb6834"/>
+<text x="497.0" y="219.26" font-size="11" text-anchor="middle" fill="#0b0b0b">11.9</text>
+<text x="484.0" y="300" font-size="12" text-anchor="middle" fill="#52514e">15W</text>
+<path d="M595.0,280 V196.6 a4,4 0 0 1 4,-4 H615.0 a4,4 0 0 1 4,4 V280 Z" fill="#2a78d6"/>
+<text x="607.0" y="186.6" font-size="11" text-anchor="middle" fill="#0b0b0b">19.0</text>
+<path d="M621.0,280 V229.72 a4,4 0 0 1 4,-4 H641.0 a4,4 0 0 1 4,4 V280 Z" fill="#eb6834"/>
+<text x="633.0" y="219.72" font-size="11" text-anchor="middle" fill="#0b0b0b">11.8</text>
+<text x="620.0" y="300" font-size="12" text-anchor="middle" fill="#52514e">MAXN_SUPER</text>
+<line x1="416" y1="280" x2="688" y2="280" stroke="#e4e3df" stroke-width="1"/>
+</svg>
