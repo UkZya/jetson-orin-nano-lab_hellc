@@ -212,3 +212,10 @@ __marimo__/
 __pycache__/
 *.pycMiniforge3-Linux-aarch64.sh
 Miniforge3-Linux-aarch64.sh
+
+# Jetson lab: model weights, sample media, run outputs (keep benchmark logs)
+*.pt
+videos/
+bus*.jpg
+runs/*
+!runs/bench_*.log

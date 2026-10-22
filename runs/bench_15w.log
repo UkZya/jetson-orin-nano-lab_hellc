@@ -1,0 +1,9 @@
+# mode: 15W (nvpmodel id 0), jetson_clocks: off, rootfs: NVMe SSD
+# date: 2026-10-22T05:19:41-07:00
+프레임 300장 로드 (768x432)
+[yolov8n.pt] 전체 29.1 ms (34.4 fps) | inference 21.7 ms | p95 전체 30.8 ms
+Loading yolov8n.engine for TensorRT inference...
+[10/22/2026-05:19:57] [TRT] [I] Loaded engine size: 9 MiB
+[10/22/2026-05:19:57] [TRT] [W] Using an engine plan file across different models of devices is not recommended and is likely to affect performance or even cause errors.
+[10/22/2026-05:19:57] [TRT] [I] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +9, now: CPU 0, GPU 15 (MiB)
+[yolov8n.engine] 전체 25.4 ms (39.4 fps) | inference 11.9 ms | p95 전체 27.8 ms
