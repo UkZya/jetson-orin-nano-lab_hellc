@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 346" width="720" height="346" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-label="YOLOv8n latency by backend (MAXN_SUPER)">
+<title>YOLOv8n latency by backend (MAXN_SUPER)</title>
+<rect width="720" height="346" rx="8" fill="#fcfcfb"/>
+<text x="32" y="30" font-size="16" font-weight="600" fill="#0b0b0b">YOLOv8n latency by backend (MAXN_SUPER)</text>
+<rect x="32" y="46" width="12" height="12" rx="2" fill="#2a78d6"/><text x="50" y="57" font-size="12" fill="#52514e">PyTorch</text><rect x="182" y="46" width="12" height="12" rx="2" fill="#1baf7a"/><text x="200" y="57" font-size="12" fill="#52514e">ONNX Runtime</text><rect x="332" y="46" width="12" height="12" rx="2" fill="#eb6834"/><text x="350" y="57" font-size="12" fill="#52514e">TensorRT</text><text x="32" y="76" font-size="12" fill="#52514e">Average latency, lower is better. Each script measures a different scope.</text>
+<line x1="242.0" y1="88" x2="242.0" y2="308" stroke="#e4e3df" stroke-width="1"/><text x="242.0" y="324" font-size="11" text-anchor="middle" fill="#52514e">0</text><line x1="374.66666666666663" y1="88" x2="374.66666666666663" y2="308" stroke="#e4e3df" stroke-width="1"/><text x="374.66666666666663" y="324" font-size="11" text-anchor="middle" fill="#52514e">50</text><line x1="507.3333333333333" y1="88" x2="507.3333333333333" y2="308" stroke="#e4e3df" stroke-width="1"/><text x="507.3333333333333" y="324" font-size="11" text-anchor="middle" fill="#52514e">100</text><line x1="640.0" y1="88" x2="640.0" y2="308" stroke="#e4e3df" stroke-width="1"/><text x="640.0" y="324" font-size="11" text-anchor="middle" fill="#52514e">150</text>
+<text x="230" y="107" font-size="12" text-anchor="end" fill="#0b0b0b">ONNX Runtime (CPU)</text>
+<text x="230" y="121" font-size="10" text-anchor="end" fill="#52514e">preprocess + inference</text>
+<path d="M242,96 H591.8219999999999 a4,4 0 0 1 4,4 V112 a4,4 0 0 1 -4,4 H242 Z" fill="#1baf7a"/>
+<text x="603.8219999999999" y="110" font-size="12" fill="#0b0b0b">133.3 ms</text>
+<text x="230" y="151" font-size="12" text-anchor="end" fill="#0b0b0b">PyTorch, full pipeline</text>
+<text x="230" y="165" font-size="10" text-anchor="end" fill="#52514e">pre + inference + post</text>
+<path d="M242,140 H345.0354666666667 a4,4 0 0 1 4,4 V156 a4,4 0 0 1 -4,4 H242 Z" fill="#2a78d6"/>
+<text x="357.0354666666667" y="154" font-size="12" fill="#0b0b0b">40.3 ms</text>
+<text x="230" y="195" font-size="12" text-anchor="end" fill="#0b0b0b">PyTorch, forward only</text>
+<text x="230" y="209" font-size="10" text-anchor="end" fill="#52514e">model forward</text>
+<path d="M242,184 H302.02493333333337 a4,4 0 0 1 4,4 V200 a4,4 0 0 1 -4,4 H242 Z" fill="#2a78d6"/>
+<text x="314.02493333333337" y="198" font-size="12" fill="#0b0b0b">24.1 ms</text>
+<text x="230" y="239" font-size="12" text-anchor="end" fill="#0b0b0b">TensorRT FP16, Python</text>
+<text x="230" y="253" font-size="10" text-anchor="end" fill="#52514e">preprocess + inference</text>
+<path d="M242,228 H296.6121333333333 a4,4 0 0 1 4,4 V244 a4,4 0 0 1 -4,4 H242 Z" fill="#eb6834"/>
+<text x="308.6121333333333" y="242" font-size="12" fill="#0b0b0b">22.1 ms</text>
+<text x="230" y="283" font-size="12" text-anchor="end" fill="#0b0b0b">TensorRT FP16, trtexec</text>
+<text x="230" y="297" font-size="10" text-anchor="end" fill="#52514e">H2D + GPU + D2H</text>
+<path d="M242,272 H248.65185973333334 a4,4 0 0 1 4,4 V288 a4,4 0 0 1 -4,4 H242 Z" fill="#eb6834"/>
+<text x="260.65185973333337" y="286" font-size="12" fill="#0b0b0b">4.0 ms</text>
+</svg>

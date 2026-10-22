@@ -1,0 +1,12 @@
+# mode: MAXN_SUPER (nvpmodel id 2), jetson_clocks: off, rootfs: NVMe SSD
+# date: 2026-10-22T05:52:44-07:00
+# cmd: /home/namuk/miniforge3/envs/jetson_1/bin/python src/yolo_v8/2_multiple_whole.py
+[INFO] Warmup: 10 iterations
+[INFO] Measure: 50 iterations
+
+=== Benchmark Result ===
+avg latency : 40.34 ms
+min latency : 35.92 ms
+max latency : 47.23 ms
+fps         : 24.79
+# exit: 0

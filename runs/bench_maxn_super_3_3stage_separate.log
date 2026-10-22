@@ -1,0 +1,77 @@
+# mode: MAXN_SUPER (nvpmodel id 2), jetson_clocks: off, rootfs: NVMe SSD
+# date: 2026-10-22T05:52:54-07:00
+# cmd: /home/namuk/miniforge3/envs/jetson_1/bin/python src/yolo_v8/3_3stage_separate.py
+[INFO] Warmup: 10 iterations
+[INFO] Measure: 50 iterations
+
+=== Stage-wise Benchmark Result ===
+preprocess   avg=   4.76 ms | min=   4.54 ms | max=   5.03 ms | ratio= 15.65%
+inference    avg=  21.90 ms | min=  19.19 ms | max=  29.94 ms | ratio= 71.98%
+postprocess  avg=   3.76 ms | min=   3.60 ms | max=   4.27 ms | ratio= 12.38%
+total        avg=  30.42 ms | min=  27.45 ms | max=  38.97 ms
+
+Estimated FPS (total avg): 32.87
+
+[INFO] Last result summary:
+ultralytics.engine.results.Results object with attributes:
+
+boxes: ultralytics.engine.results.Boxes object
+keypoints: None
+masks: None
+names: {0: 'person', 1: 'bicycle', 2: 'car', 3: 'motorcycle', 4: 'airplane', 5: 'bus', 6: 'train', 7: 'truck', 8: 'boat', 9: 'traffic light', 10: 'fire hydrant', 11: 'stop sign', 12: 'parking meter', 13: 'bench', 14: 'bird', 15: 'cat', 16: 'dog', 17: 'horse', 18: 'sheep', 19: 'cow', 20: 'elephant', 21: 'bear', 22: 'zebra', 23: 'giraffe', 24: 'backpack', 25: 'umbrella', 26: 'handbag', 27: 'tie', 28: 'suitcase', 29: 'frisbee', 30: 'skis', 31: 'snowboard', 32: 'sports ball', 33: 'kite', 34: 'baseball bat', 35: 'baseball glove', 36: 'skateboard', 37: 'surfboard', 38: 'tennis racket', 39: 'bottle', 40: 'wine glass', 41: 'cup', 42: 'fork', 43: 'knife', 44: 'spoon', 45: 'bowl', 46: 'banana', 47: 'apple', 48: 'sandwich', 49: 'orange', 50: 'broccoli', 51: 'carrot', 52: 'hot dog', 53: 'pizza', 54: 'donut', 55: 'cake', 56: 'chair', 57: 'couch', 58: 'potted plant', 59: 'bed', 60: 'dining table', 61: 'toilet', 62: 'tv', 63: 'laptop', 64: 'mouse', 65: 'remote', 66: 'keyboard', 67: 'cell phone', 68: 'microwave', 69: 'oven', 70: 'toaster', 71: 'sink', 72: 'refrigerator', 73: 'book', 74: 'clock', 75: 'vase', 76: 'scissors', 77: 'teddy bear', 78: 'hair drier', 79: 'toothbrush'}
+obb: None
+orig_img: array([[[119, 146, 172],
+        [121, 148, 174],
+        [122, 152, 177],
+        ...,
+        [161, 171, 188],
+        [160, 170, 187],
+        [160, 170, 187]],
+
+       [[120, 147, 173],
+        [122, 149, 175],
+        [123, 153, 178],
+        ...,
+        [161, 171, 188],
+        [160, 170, 187],
+        [160, 170, 187]],
+
+       [[123, 150, 176],
+        [124, 151, 177],
+        [125, 155, 180],
+        ...,
+        [161, 171, 188],
+        [160, 170, 187],
+        [160, 170, 187]],
+
+       ...,
+
+       [[183, 182, 186],
+        [179, 178, 182],
+        [180, 179, 183],
+        ...,
+        [121, 111, 117],
+        [113, 103, 109],
+        [115, 105, 111]],
+
+       [[165, 164, 168],
+        [173, 172, 176],
+        [187, 186, 190],
+        ...,
+        [102,  92,  98],
+        [101,  91,  97],
+        [103,  93,  99]],
+
+       [[123, 122, 126],
+        [145, 144, 148],
+        [176, 175, 179],
+        ...,
+        [ 95,  85,  91],
+        [ 96,  86,  92],
+        [ 98,  88,  94]]], shape=(1080, 810, 3), dtype=uint8)
+orig_shape: (1080, 810)
+path: 'image0.jpg'
+probs: None
+save_dir: None
+speed: {'preprocess': None, 'inference': None, 'postprocess': None}
+# exit: 0

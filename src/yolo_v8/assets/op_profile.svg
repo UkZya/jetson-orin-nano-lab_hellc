@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 494" width="720" height="494" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-label="Slowest ops, PyTorch profiler (MAXN_SUPER)">
+<title>Slowest ops, PyTorch profiler (MAXN_SUPER)</title>
+<rect width="720" height="494" rx="8" fill="#fcfcfb"/>
+<text x="32" y="30" font-size="16" font-weight="600" fill="#0b0b0b">Slowest ops, PyTorch profiler (MAXN_SUPER)</text>
+<text x="32" y="44" font-size="12" fill="#52514e">Share of summed CPU time, top 10. Ops are nested (conv2d contains convolution), so shares overlap.</text>
+<line x1="242.0" y1="56" x2="242.0" y2="456" stroke="#e4e3df" stroke-width="1"/><text x="242.0" y="472" font-size="11" text-anchor="middle" fill="#52514e">0%</text><line x1="366.375" y1="56" x2="366.375" y2="456" stroke="#e4e3df" stroke-width="1"/><text x="366.375" y="472" font-size="11" text-anchor="middle" fill="#52514e">5%</text><line x1="490.75" y1="56" x2="490.75" y2="456" stroke="#e4e3df" stroke-width="1"/><text x="490.75" y="472" font-size="11" text-anchor="middle" fill="#52514e">10%</text><line x1="615.125" y1="56" x2="615.125" y2="456" stroke="#e4e3df" stroke-width="1"/><text x="615.125" y="472" font-size="11" text-anchor="middle" fill="#52514e">15%</text>
+<text x="230" y="75" font-size="12" text-anchor="end" fill="#0b0b0b">aten::conv2d</text>
+<text x="230" y="89" font-size="10" text-anchor="end" fill="#52514e">1280 calls, 149 ms</text>
+<path d="M242,64 H591.47375 a4,4 0 0 1 4,4 V78 a4,4 0 0 1 -4,4 H242 Z" fill="#2a78d6"/>
+<text x="603.47375" y="78" font-size="12" fill="#0b0b0b">14.2%</text>
+<text x="230" y="115" font-size="12" text-anchor="end" fill="#0b0b0b">aten::convolution</text>
+<text x="230" y="129" font-size="10" text-anchor="end" fill="#52514e">1280 calls, 144 ms</text>
+<path d="M242,104 H579.7825 a4,4 0 0 1 4,4 V118 a4,4 0 0 1 -4,4 H242 Z" fill="#2a78d6"/>
+<text x="591.7825" y="118" font-size="12" fill="#0b0b0b">13.7%</text>
+<text x="230" y="155" font-size="12" text-anchor="end" fill="#0b0b0b">aten::_convolution</text>
+<text x="230" y="169" font-size="10" text-anchor="end" fill="#52514e">1280 calls, 135 ms</text>
+<path d="M242,144 H559.385 a4,4 0 0 1 4,4 V158 a4,4 0 0 1 -4,4 H242 Z" fill="#2a78d6"/>
+<text x="571.385" y="158" font-size="12" fill="#0b0b0b">12.9%</text>
+<text x="230" y="195" font-size="12" text-anchor="end" fill="#0b0b0b">aten::batch_norm</text>
+<text x="230" y="209" font-size="10" text-anchor="end" fill="#52514e">1140 calls, 122 ms</text>
+<path d="M242,184 H527.0474999999999 a4,4 0 0 1 4,4 V198 a4,4 0 0 1 -4,4 H242 Z" fill="#2a78d6"/>
+<text x="539.0474999999999" y="198" font-size="12" fill="#0b0b0b">11.6%</text>
+<text x="230" y="235" font-size="12" text-anchor="end" fill="#0b0b0b">aten::cudnn_convolution</text>
+<text x="230" y="249" font-size="10" text-anchor="end" fill="#52514e">1280 calls, 117 ms</text>
+<path d="M242,224 H516.3512499999999 a4,4 0 0 1 4,4 V238 a4,4 0 0 1 -4,4 H242 Z" fill="#2a78d6"/>
+<text x="528.3512499999999" y="238" font-size="12" fill="#0b0b0b">11.2%</text>
+<text x="230" y="275" font-size="12" text-anchor="end" fill="#0b0b0b">aten::_batch_norm_impl_index</text>
+<text x="230" y="289" font-size="10" text-anchor="end" fill="#52514e">1140 calls, 117 ms</text>
+<path d="M242,264 H515.1075000000001 a4,4 0 0 1 4,4 V278 a4,4 0 0 1 -4,4 H242 Z" fill="#2a78d6"/>
+<text x="527.1075000000001" y="278" font-size="12" fill="#0b0b0b">11.1%</text>
+<text x="230" y="315" font-size="12" text-anchor="end" fill="#0b0b0b">aten::cudnn_batch_norm</text>
+<text x="230" y="329" font-size="10" text-anchor="end" fill="#52514e">1140 calls, 109 ms</text>
+<path d="M242,304 H497.94374999999997 a4,4 0 0 1 4,4 V318 a4,4 0 0 1 -4,4 H242 Z" fill="#2a78d6"/>
+<text x="509.94374999999997" y="318" font-size="12" fill="#0b0b0b">10.4%</text>
+<text x="230" y="355" font-size="12" text-anchor="end" fill="#0b0b0b">aten::silu_</text>
+<text x="230" y="369" font-size="10" text-anchor="end" fill="#52514e">1140 calls, 36 ms</text>
+<path d="M242,344 H323.0725 a4,4 0 0 1 4,4 V358 a4,4 0 0 1 -4,4 H242 Z" fill="#2a78d6"/>
+<text x="335.0725" y="358" font-size="12" fill="#0b0b0b">3.4%</text>
+<text x="230" y="395" font-size="12" text-anchor="end" fill="#0b0b0b">aten::empty</text>
+<text x="230" y="409" font-size="10" text-anchor="end" fill="#52514e">4580 calls, 30 ms</text>
+<path d="M242,384 H309.1425 a4,4 0 0 1 4,4 V398 a4,4 0 0 1 -4,4 H242 Z" fill="#2a78d6"/>
+<text x="321.1425" y="398" font-size="12" fill="#0b0b0b">2.9%</text>
+<text x="230" y="435" font-size="12" text-anchor="end" fill="#0b0b0b">aten::empty_like</text>
+<text x="230" y="449" font-size="10" text-anchor="end" fill="#52514e">1160 calls, 18 ms</text>
+<path d="M242,424 H280.03875 a4,4 0 0 1 4,4 V438 a4,4 0 0 1 -4,4 H242 Z" fill="#2a78d6"/>
+<text x="292.03875" y="438" font-size="12" fill="#0b0b0b">1.7%</text>
+</svg>

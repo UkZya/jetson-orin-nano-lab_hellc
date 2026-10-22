@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 494" width="720" height="494" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-label="Slowest modules, PyTorch (MAXN_SUPER)">
+<title>Slowest modules, PyTorch (MAXN_SUPER)</title>
+<rect width="720" height="494" rx="8" fill="#fcfcfb"/>
+<text x="32" y="30" font-size="16" font-weight="600" fill="#0b0b0b">Slowest modules, PyTorch (MAXN_SUPER)</text>
+<text x="32" y="44" font-size="12" fill="#52514e">Total time over 30 forward passes (10 warm-up + 20 measured), top 10.</text>
+<line x1="232.0" y1="56" x2="232.0" y2="456" stroke="#e4e3df" stroke-width="1"/><text x="232.0" y="472" font-size="11" text-anchor="middle" fill="#52514e">0</text><line x1="368.0" y1="56" x2="368.0" y2="456" stroke="#e4e3df" stroke-width="1"/><text x="368.0" y="472" font-size="11" text-anchor="middle" fill="#52514e">100</text><line x1="504.0" y1="56" x2="504.0" y2="456" stroke="#e4e3df" stroke-width="1"/><text x="504.0" y="472" font-size="11" text-anchor="middle" fill="#52514e">200</text><line x1="640.0" y1="56" x2="640.0" y2="456" stroke="#e4e3df" stroke-width="1"/><text x="640.0" y="472" font-size="11" text-anchor="middle" fill="#52514e">300</text>
+<text x="220" y="75" font-size="12" text-anchor="end" fill="#0b0b0b">model.0.act</text>
+<text x="220" y="89" font-size="10" text-anchor="end" fill="#52514e">1710 calls, 0.15 ms avg</text>
+<path d="M232,64 H568.8568 a4,4 0 0 1 4,4 V78 a4,4 0 0 1 -4,4 H232 Z" fill="#2a78d6"/>
+<text x="580.8568" y="78" font-size="12" fill="#0b0b0b">251 ms</text>
+<text x="220" y="115" font-size="12" text-anchor="end" fill="#0b0b0b">model.0.conv</text>
+<text x="220" y="129" font-size="10" text-anchor="end" fill="#52514e">30 calls, 4.83 ms avg</text>
+<path d="M232,104 H425.26664000000005 a4,4 0 0 1 4,4 V118 a4,4 0 0 1 -4,4 H232 Z" fill="#2a78d6"/>
+<text x="437.26664000000005" y="118" font-size="12" fill="#0b0b0b">145 ms</text>
+<text x="220" y="155" font-size="12" text-anchor="end" fill="#0b0b0b">model.2.cv1.conv</text>
+<text x="220" y="169" font-size="10" text-anchor="end" fill="#52514e">30 calls, 2.73 ms avg</text>
+<path d="M232,144 H339.17592 a4,4 0 0 1 4,4 V158 a4,4 0 0 1 -4,4 H232 Z" fill="#2a78d6"/>
+<text x="351.17592" y="158" font-size="12" fill="#0b0b0b">82 ms</text>
+<text x="220" y="195" font-size="12" text-anchor="end" fill="#0b0b0b">model.1.conv</text>
+<text x="220" y="209" font-size="10" text-anchor="end" fill="#52514e">30 calls, 2.10 ms avg</text>
+<path d="M232,184 H313.68 a4,4 0 0 1 4,4 V198 a4,4 0 0 1 -4,4 H232 Z" fill="#2a78d6"/>
+<text x="325.68" y="198" font-size="12" fill="#0b0b0b">63 ms</text>
+<text x="220" y="235" font-size="12" text-anchor="end" fill="#0b0b0b">model.22.cv3.0.1.conv</text>
+<text x="220" y="249" font-size="10" text-anchor="end" fill="#52514e">30 calls, 1.64 ms avg</text>
+<path d="M232,224 H294.79232 a4,4 0 0 1 4,4 V238 a4,4 0 0 1 -4,4 H232 Z" fill="#2a78d6"/>
+<text x="306.79232" y="238" font-size="12" fill="#0b0b0b">49 ms</text>
+<text x="220" y="275" font-size="12" text-anchor="end" fill="#0b0b0b">model.2.m.0.cv1.conv</text>
+<text x="220" y="289" font-size="10" text-anchor="end" fill="#52514e">30 calls, 1.55 ms avg</text>
+<path d="M232,264 H291.20192 a4,4 0 0 1 4,4 V278 a4,4 0 0 1 -4,4 H232 Z" fill="#2a78d6"/>
+<text x="303.20192" y="278" font-size="12" fill="#0b0b0b">46 ms</text>
+<text x="220" y="315" font-size="12" text-anchor="end" fill="#0b0b0b">model.22.cv3.0.0.conv</text>
+<text x="220" y="329" font-size="10" text-anchor="end" fill="#52514e">30 calls, 1.31 ms avg</text>
+<path d="M232,304 H281.61936000000003 a4,4 0 0 1 4,4 V318 a4,4 0 0 1 -4,4 H232 Z" fill="#2a78d6"/>
+<text x="293.61936000000003" y="318" font-size="12" fill="#0b0b0b">39 ms</text>
+<text x="220" y="355" font-size="12" text-anchor="end" fill="#0b0b0b">model.4.m.0.cv1.conv</text>
+<text x="220" y="369" font-size="10" text-anchor="end" fill="#52514e">30 calls, 1.14 ms avg</text>
+<path d="M232,344 H274.45488 a4,4 0 0 1 4,4 V358 a4,4 0 0 1 -4,4 H232 Z" fill="#2a78d6"/>
+<text x="286.45488" y="358" font-size="12" fill="#0b0b0b">34 ms</text>
+<text x="220" y="395" font-size="12" text-anchor="end" fill="#0b0b0b">model.22.cv2.0.0.conv</text>
+<text x="220" y="409" font-size="10" text-anchor="end" fill="#52514e">30 calls, 1.11 ms avg</text>
+<path d="M232,384 H273.25536 a4,4 0 0 1 4,4 V398 a4,4 0 0 1 -4,4 H232 Z" fill="#2a78d6"/>
+<text x="285.25536" y="398" font-size="12" fill="#0b0b0b">33 ms</text>
+<text x="220" y="435" font-size="12" text-anchor="end" fill="#0b0b0b">model.22.dfl.conv</text>
+<text x="220" y="449" font-size="10" text-anchor="end" fill="#52514e">30 calls, 1.04 ms avg</text>
+<path d="M232,424 H270.30416 a4,4 0 0 1 4,4 V438 a4,4 0 0 1 -4,4 H232 Z" fill="#2a78d6"/>
+<text x="282.30416" y="438" font-size="12" fill="#0b0b0b">31 ms</text>
+</svg>

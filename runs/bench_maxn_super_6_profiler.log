@@ -1,0 +1,26 @@
+# mode: MAXN_SUPER (nvpmodel id 2), jetson_clocks: off, rootfs: NVMe SSD
+# date: 2026-10-22T05:53:23-07:00
+# cmd: /home/namuk/miniforge3/envs/jetson_1/bin/python src/yolo_v8/6_profiler.py
+/home/namuk/.local/lib/python3.10/site-packages/torch/profiler/profiler.py:217: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+
+=== Pretty Op-wise Profiling (Top 15) ===
+[INFO] Time domain: CPU
+op                                      time(ms)      ratio      calls
+------------------------------------------------------------------------
+aten::conv2d                             148.802     14.21%       1280
+aten::convolution                        143.964     13.74%       1280
+aten::_convolution                       135.367     12.92%       1280
+aten::batch_norm                         121.728     11.62%       1140
+aten::cudnn_convolution                  117.245     11.19%       1280
+aten::_batch_norm_impl_index             116.661     11.14%       1140
+aten::cudnn_batch_norm                   109.467     10.45%       1140
+aten::silu_                               35.789      3.42%       1140
+aten::empty                               29.941      2.86%       4580
+aten::empty_like                          17.726      1.69%       1160
+aten::cat                                 14.630      1.40%        340
+aten::chunk                                6.513      0.62%        180
+aten::add                                  6.052      0.58%        160
+aten::split                                5.705      0.54%        180
+aten::view                                 5.479      0.52%       1420
+# exit: 0

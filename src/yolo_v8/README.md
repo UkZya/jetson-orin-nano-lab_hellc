@@ -24,14 +24,20 @@ Benchmarking and profiling results for **YOLOv8n** across multiple inference bac
 
 ## 🚀 Backend Comparison Summary
 
-| Backend | Avg Latency | Min Latency | Max Latency | FPS |
-|---|---|---|---|---|
-| **PyTorch (Full Pipeline)** | 40.91 ms | 39.30 ms | 48.23 ms | 24.45 |
-| **PyTorch (Forward Only)** | 28.00 ms | 27.65 ms | 35.75 ms | **35.71** |
-| **ONNX Runtime** | 385.64 ms | 191.41 ms | 725.77 ms | 2.59 |
-| **TensorRT FP16** | **6.12 ms** | — | — | **183.5 qps** |
+> Measured on **MAXN_SUPER** (see [Environment](#️-environment)). Each script measures a different scope, so the rows are not strictly like-for-like. "Previous" is the earlier run of the same scripts; its power mode was not recorded.
 
-> ✅ TensorRT FP16 is **~6.7× faster** than PyTorch forward-only, and **~63× faster** than ONNX Runtime.
+![Average latency by backend](assets/backends_latency.svg)
+
+| Backend | Avg Latency | Min Latency | Max Latency | FPS | Previous avg |
+|---|---|---|---|---|---|
+| **PyTorch (Full Pipeline)** | 40.34 ms | 35.92 ms | 47.23 ms | 24.79 | 40.91 ms |
+| **PyTorch (Forward Only)** | 24.13 ms | 23.45 ms | 30.99 ms | **41.45** | 28.00 ms |
+| **ONNX Runtime (CPU)** | 133.35 ms | 113.76 ms | 320.35 ms | 7.50 | 385.64 ms |
+| **TensorRT FP16 (Python, pre + inf)** | 22.09 ms | 20.00 ms | 24.84 ms | 45.27 | — |
+| **TensorRT FP16 (trtexec)** | **4.01 ms** | 3.69 ms | 5.57 ms | **288.2 qps** | 6.12 ms |
+
+> ✅ TensorRT FP16 (trtexec) is **~6.0× faster** than PyTorch forward-only, and **~33× faster** than ONNX Runtime.
+> ⚠️ The Python TensorRT script (22.1 ms) is far slower than trtexec (4.0 ms): it adds 7.3 ms of preprocessing, and its 14.8 ms "inference" includes host copies and Python overhead (cause not profiled).
 
 ---
 
@@ -71,12 +77,14 @@ Raw logs: [`runs/bench_15w.log`](../../runs/bench_15w.log), [`runs/bench_maxn_su
 
 > Full pipeline: preprocess → inference → postprocess
 
+![Stage breakdown](assets/stage_breakdown.svg)
+
 | Stage | Avg | Min | Max | Ratio |
 |---|---|---|---|---|
-| Preprocess | 5.61 ms | 5.16 ms | 6.31 ms | 17.50% |
-| **Inference** | **22.41 ms** | 21.67 ms | 22.80 ms | **69.94%** |
-| Postprocess | 4.02 ms | 3.93 ms | 4.17 ms | 12.56% |
-| **Total** | **32.03 ms** | 30.81 ms | 32.95 ms | 100% |
+| Preprocess | 4.76 ms | 4.54 ms | 5.03 ms | 15.65% |
+| **Inference** | **21.90 ms** | 19.19 ms | 29.94 ms | **71.98%** |
+| Postprocess | 3.76 ms | 3.60 ms | 4.27 ms | 12.38% |
+| **Total** | **30.42 ms** | 27.45 ms | 38.97 ms | 100% |
 
 ---
 
@@ -84,21 +92,34 @@ Raw logs: [`runs/bench_15w.log`](../../runs/bench_15w.log), [`runs/bench_maxn_su
 
 | Stage | Avg | Min | Max |
 |---|---|---|---|
-| Preprocess | 12.89 ms | 7.16 ms | 25.89 ms |
-| **Inference** | **372.75 ms** | 181.60 ms | 708.62 ms |
-| **Total** | **385.64 ms** | 191.41 ms | 725.77 ms |
+| Preprocess | 10.50 ms | 7.61 ms | 18.42 ms |
+| **Inference** | **122.85 ms** | 105.29 ms | 303.45 ms |
+| **Total** | **133.35 ms** | 113.76 ms | 320.35 ms |
 
-> ⚠️ ONNX Runtime shows high variance (181 ms ~ 708 ms). CPU fallback ops suspected.
+> ⚠️ The installed `onnxruntime` only offers `CPUExecutionProvider` (providers: `AzureExecutionProvider`, `CPUExecutionProvider`), so the whole model runs on the CPU, not just a few fallback ops. Variance is high (105 ms ~ 303 ms).
 
 ---
 
 ## ⚡ TensorRT FP16 Result
 
+**trtexec** (engine only, CUDA Graph, 200 iterations)
+
 | Metric | Value |
 |---|---|
-| Mean Latency | 6.12 ms |
-| GPU Compute Time | 5.41 ms |
-| Throughput | 183.5 qps |
+| Mean Latency (H2D + GPU + D2H) | 4.01 ms |
+| GPU Compute Time | 3.46 ms |
+| H2D / D2H | 0.32 ms / 0.24 ms |
+| Throughput | 288.2 qps |
+
+**Python** (`9_tensorrt_inference.py`, `bus.jpg`, 100 iterations)
+
+| Stage | Avg | Min | Max |
+|---|---|---|---|
+| Preprocess | 7.30 ms | 5.48 ms | 10.00 ms |
+| Inference | 14.79 ms | 14.53 ms | 15.42 ms |
+| **Total** | **22.09 ms** | 20.00 ms | 24.84 ms |
+
+> `9_tensorrt_inference.py` needs `cuda-python` 12.x on JetPack 6.2 (CUDA 12.6 driver). `cuda-python` 13.x fails with `cudaErrorInsufficientDriver`.
 
 **Build command:**
 ```bash
@@ -123,50 +144,56 @@ trtexec \
 
 ## 🧩 Module-wise Profiling (Top 20, sorted by total time)
 
+![Slowest modules](assets/module_profile.svg)
+
+> Hooks were registered before warm-up, so each module's 30 calls include the 10 warm-up passes.
+
 | Module | Avg (ms) | Total (ms) | Calls |
 |---|---|---|---|
-| model.0.act | 0.165 | 281.558 | 1710 |
-| model.0.conv | 6.007 | 180.212 | 30 |
-| model.2.cv1.conv | 3.090 | 92.708 | 30 |
-| model.1.conv | 2.538 | 76.140 | 30 |
-| model.22.cv3.0.1.conv | 1.671 | 50.124 | 30 |
-| model.2.m.0.cv1.conv | 1.630 | 48.907 | 30 |
-| model.22.cv3.0.0.conv | 1.345 | 40.341 | 30 |
-| model.4.m.0.cv1.conv | 1.169 | 35.063 | 30 |
-| model.0.bn | 1.160 | 34.810 | 30 |
-| model.22.cv2.0.0.conv | 1.141 | 34.238 | 30 |
-| model.22.dfl.conv | 1.110 | 33.289 | 30 |
-| model.7.conv | 1.076 | 32.269 | 30 |
-| model.3.conv | 1.048 | 31.453 | 30 |
-| model.4.m.1.cv1.conv | 1.007 | 30.201 | 30 |
-| model.4.m.1.cv2.conv | 1.006 | 30.168 | 30 |
-| model.4.m.0.cv2.conv | 1.003 | 30.102 | 30 |
-| model.22.cv2.0.1.conv | 1.001 | 30.035 | 30 |
-| model.15.m.0.cv1.conv | 0.989 | 29.684 | 30 |
-| model.15.m.0.cv2.conv | 0.973 | 29.191 | 30 |
-| model.22.cv2.1.0.conv | 0.906 | 27.167 | 30 |
+| model.0.act | 0.147 | 250.630 | 1710 |
+| model.0.conv | 4.835 | 145.049 | 30 |
+| model.2.cv1.conv | 2.725 | 81.747 | 30 |
+| model.1.conv | 2.100 | 63.000 | 30 |
+| model.22.cv3.0.1.conv | 1.637 | 49.112 | 30 |
+| model.2.m.0.cv1.conv | 1.549 | 46.472 | 30 |
+| model.22.cv3.0.0.conv | 1.314 | 39.426 | 30 |
+| model.4.m.0.cv1.conv | 1.139 | 34.158 | 30 |
+| model.22.cv2.0.0.conv | 1.109 | 33.276 | 30 |
+| model.22.dfl.conv | 1.037 | 31.106 | 30 |
+| model.7.conv | 1.007 | 30.222 | 30 |
+| model.4.m.1.cv1.conv | 0.981 | 29.434 | 30 |
+| model.4.m.1.cv2.conv | 0.980 | 29.408 | 30 |
+| model.22.cv2.0.1.conv | 0.980 | 29.392 | 30 |
+| model.4.m.0.cv2.conv | 0.974 | 29.222 | 30 |
+| model.15.m.0.cv1.conv | 0.968 | 29.040 | 30 |
+| model.15.m.0.cv2.conv | 0.966 | 28.972 | 30 |
+| model.3.conv | 0.896 | 26.874 | 30 |
+| model.22.cv2.1.0.conv | 0.883 | 26.484 | 30 |
+| model.9.m | 0.274 | 24.662 | 90 |
 
 ---
 
 ## 🔥 Op-wise Profiling — Top 15 (CPU time domain)
 
+![Slowest ops](assets/op_profile.svg)
+
 | Op | Time (ms) | Ratio | Calls |
 |---|---|---|---|
-| aten::conv2d | 164.916 | 14.19% | 1280 |
-| aten::convolution | 159.206 | 13.70% | 1280 |
-| aten::_convolution | 149.525 | 12.86% | 1280 |
-| aten::batch_norm | 136.808 | 11.77% | 1140 |
-| aten::_batch_norm_impl_index | 130.964 | 11.27% | 1140 |
-| aten::cudnn_convolution | 129.083 | 11.11% | 1280 |
-| aten::cudnn_batch_norm | 122.864 | 10.57% | 1140 |
-| aten::silu_ | 40.121 | 3.45% | 1140 |
-| aten::empty | 32.992 | 2.84% | 4580 |
-| aten::empty_like | 19.803 | 1.70% | 1160 |
-| aten::cat | 15.859 | 1.36% | 340 |
-| aten::chunk | 7.336 | 0.63% | 180 |
-| aten::add | 6.674 | 0.57% | 160 |
-| aten::split | 6.491 | 0.56% | 180 |
-| aten::view | 5.973 | 0.51% | 1420 |
+| aten::conv2d | 148.802 | 14.21% | 1280 |
+| aten::convolution | 143.964 | 13.74% | 1280 |
+| aten::_convolution | 135.367 | 12.92% | 1280 |
+| aten::batch_norm | 121.728 | 11.62% | 1140 |
+| aten::cudnn_convolution | 117.245 | 11.19% | 1280 |
+| aten::_batch_norm_impl_index | 116.661 | 11.14% | 1140 |
+| aten::cudnn_batch_norm | 109.467 | 10.45% | 1140 |
+| aten::silu_ | 35.789 | 3.42% | 1140 |
+| aten::empty | 29.941 | 2.86% | 4580 |
+| aten::empty_like | 17.726 | 1.69% | 1160 |
+| aten::cat | 14.630 | 1.40% | 340 |
+| aten::chunk | 6.513 | 0.62% | 180 |
+| aten::add | 6.052 | 0.58% | 160 |
+| aten::split | 5.705 | 0.54% | 180 |
+| aten::view | 5.479 | 0.52% | 1420 |
 
 ---
 
@@ -175,24 +202,24 @@ trtexec \
 ### 1순위 — Conv + BN Fusion
 | Op | Time (ms) | Ratio |
 |---|---|---|
-| `aten::cudnn_convolution` | 129.083 ms | 11.11% |
-| `aten::cudnn_batch_norm` | 122.864 ms | 10.57% |
+| `aten::cudnn_convolution` | 117.245 ms | 11.19% |
+| `aten::cudnn_batch_norm` | 109.467 ms | 10.45% |
 
 → Conv-BN fusion (e.g., `torch.fx` or TensorRT graph optimization) 으로 직접 절감 가능
 
 ### 2순위 — Activation
 | Op | Time (ms) | Ratio |
 |---|---|---|
-| `aten::silu_` | 40.121 ms | 3.45% |
+| `aten::silu_` | 35.789 ms | 3.42% |
 
 → SiLU → ReLU 교체 or fused kernel 적용 검토
 
 ### 3순위 — Memory Allocation
 | Op | Time (ms) | Ratio |
 |---|---|---|
-| `aten::empty` | 32.992 ms | 2.84% |
-| `aten::empty_like` | 19.803 ms | 1.70% |
-| `aten::cat` | 15.859 ms | 1.36% |
+| `aten::empty` | 29.941 ms | 2.86% |
+| `aten::empty_like` | 17.726 ms | 1.69% |
+| `aten::cat` | 14.630 ms | 1.40% |
 
 → 잦은 메모리 할당 → pre-allocated buffer / in-place op 활용 권장
 
@@ -202,7 +229,17 @@ trtexec \
 
 | Item | Detail |
 |---|---|
-| Device | Jetson Orin Nano |
+| Device | Jetson Orin Nano 8GB Super |
+| Power mode | MAXN_SUPER (`nvpmodel -m 2`), `jetson_clocks` off |
+| Software | JetPack 6.2.1 (L4T R36.4.7), CUDA 12.6, TensorRT 10.3, PyTorch 2.10 |
 | Model | YOLOv8n |
 | TensorRT Precision | FP16 |
 | CUDA Graph | Enabled (trtexec) |
+| Input | `bus.jpg` (scripts 2, 3, 7, 9) / random 1×3×640×640 tensor (scripts 4, 5, 6) |
+
+**Reproduce** (from the repository root; raw logs are in `runs/bench_maxn_super_*.log`)
+```bash
+python src/yolo_v8/2_multiple_whole.py        # also 3_3stage_separate, 4_forward_only, 5_module_separate, 6_profiler, 7_onnx_profile
+PYTHONPATH=~/trt_shim python src/yolo_v8/9_tensorrt_inference.py   # needs cuda-python 12.x
+python src/yolo_v8/plot_profile.py            # regenerate the charts from the logs
+```

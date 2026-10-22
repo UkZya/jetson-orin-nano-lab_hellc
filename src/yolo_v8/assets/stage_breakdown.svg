@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 258" width="720" height="258" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-label="Where the time goes: stage breakdown (MAXN_SUPER)">
+<title>Where the time goes: stage breakdown (MAXN_SUPER)</title>
+<rect width="720" height="258" rx="8" fill="#fcfcfb"/>
+<text x="32" y="30" font-size="16" font-weight="600" fill="#0b0b0b">Where the time goes: stage breakdown (MAXN_SUPER)</text>
+<rect x="32" y="46" width="12" height="12" rx="2" fill="#e87ba4"/><text x="50" y="57" font-size="12" fill="#52514e">Preprocess</text><rect x="182" y="46" width="12" height="12" rx="2" fill="#008300"/><text x="200" y="57" font-size="12" fill="#52514e">Inference</text><rect x="332" y="46" width="12" height="12" rx="2" fill="#6250d6"/><text x="350" y="57" font-size="12" fill="#52514e">Postprocess</text><text x="32" y="76" font-size="12" fill="#52514e">Average ms per image. Segment labels shown only where they fit.</text>
+<line x1="190.0" y1="88" x2="190.0" y2="220" stroke="#e4e3df" stroke-width="1"/><text x="190.0" y="236" font-size="11" text-anchor="middle" fill="#52514e">0</text><line x1="340.0" y1="88" x2="340.0" y2="220" stroke="#e4e3df" stroke-width="1"/><text x="340.0" y="236" font-size="11" text-anchor="middle" fill="#52514e">50</text><line x1="490.0" y1="88" x2="490.0" y2="220" stroke="#e4e3df" stroke-width="1"/><text x="490.0" y="236" font-size="11" text-anchor="middle" fill="#52514e">100</text><line x1="640.0" y1="88" x2="640.0" y2="220" stroke="#e4e3df" stroke-width="1"/><text x="640.0" y="236" font-size="11" text-anchor="middle" fill="#52514e">150</text>
+<text x="178" y="110" font-size="12" text-anchor="end" fill="#0b0b0b">PyTorch</text>
+<path d="M190,96 h14.28 v20 h-14.28 Z" fill="#e87ba4"/>
+<path d="M206.28,96 h65.69999999999999 v20 h-65.69999999999999 Z" fill="#008300"/>
+<text x="239.13" y="110" font-size="11" text-anchor="middle" fill="#ffffff">21.9</text>
+<path d="M273.98,96 H281.26 a4,4 0 0 1 4,4 V112 a4,4 0 0 1 -4,4 H273.98 Z" fill="#6250d6"/>
+<text x="293.26" y="110" font-size="12" fill="#0b0b0b">30.4 ms</text>
+<text x="178" y="154" font-size="12" text-anchor="end" fill="#0b0b0b">ONNX Runtime (CPU)</text>
+<path d="M190,140 h31.5 v20 h-31.5 Z" fill="#e87ba4"/>
+<path d="M223.5,140 H588.05 a4,4 0 0 1 4,4 V156 a4,4 0 0 1 -4,4 H223.5 Z" fill="#008300"/>
+<text x="407.775" y="154" font-size="11" text-anchor="middle" fill="#ffffff">122.8</text>
+<text x="600.05" y="154" font-size="12" fill="#0b0b0b">133.3 ms</text>
+<text x="178" y="198" font-size="12" text-anchor="end" fill="#0b0b0b">TensorRT FP16, Python</text>
+<path d="M190,184 h21.9 v20 h-21.9 Z" fill="#e87ba4"/>
+<path d="M213.9,184 H254.26999999999998 a4,4 0 0 1 4,4 V200 a4,4 0 0 1 -4,4 H213.9 Z" fill="#008300"/>
+<text x="266.27" y="198" font-size="12" fill="#0b0b0b">22.1 ms</text>
+</svg>

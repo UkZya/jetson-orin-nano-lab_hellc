@@ -1,0 +1,58 @@
+# mode: MAXN_SUPER (nvpmodel id 2), jetson_clocks: off, rootfs: NVMe SSD
+# date: 2026-10-22T05:53:14-07:00
+# cmd: /home/namuk/miniforge3/envs/jetson_1/bin/python src/yolo_v8/5_module_separate.py
+
+=== Module-wise Profiling Result (sorted by total time) ===
+module                                                           avg_ms     total_ms    calls
+-----------------------------------------------------------------------------------------------
+model.0.act                                                       0.147      250.630     1710
+model.0.conv                                                      4.835      145.049       30
+model.2.cv1.conv                                                  2.725       81.747       30
+model.1.conv                                                      2.100       63.000       30
+model.22.cv3.0.1.conv                                             1.637       49.112       30
+model.2.m.0.cv1.conv                                              1.549       46.472       30
+model.22.cv3.0.0.conv                                             1.314       39.426       30
+model.4.m.0.cv1.conv                                              1.139       34.158       30
+model.22.cv2.0.0.conv                                             1.109       33.276       30
+model.22.dfl.conv                                                 1.037       31.106       30
+model.7.conv                                                      1.007       30.222       30
+model.4.m.1.cv1.conv                                              0.981       29.434       30
+model.4.m.1.cv2.conv                                              0.980       29.408       30
+model.22.cv2.0.1.conv                                             0.980       29.392       30
+model.4.m.0.cv2.conv                                              0.974       29.222       30
+model.15.m.0.cv1.conv                                             0.968       29.040       30
+model.15.m.0.cv2.conv                                             0.966       28.972       30
+model.3.conv                                                      0.896       26.874       30
+model.22.cv2.1.0.conv                                             0.883       26.484       30
+model.9.m                                                         0.274       24.662       90
+model.0.bn                                                        0.810       24.308       30
+model.22.cv2.2.0.conv                                             0.794       23.835       30
+model.22.cv3.1.0.conv                                             0.793       23.801       30
+model.5.conv                                                      0.772       23.173       30
+model.22.cv3.1.1.conv                                             0.760       22.801       30
+model.2.m.0.cv2.conv                                              0.751       22.540       30
+model.22.cv3.2.0.conv                                             0.726       21.788       30
+model.8.m.0.cv1.conv                                              0.697       20.905       30
+model.19.conv                                                     0.679       20.356       30
+model.2.cv2.conv                                                  0.622       18.671       30
+model.22.cv3.0.2                                                  0.582       17.462       30
+model.16.conv                                                     0.573       17.184       30
+model.8.m.0.cv2.conv                                              0.528       15.826       30
+model.15.cv1.conv                                                 0.521       15.633       30
+model.12.cv1.conv                                                 0.521       15.631       30
+model.21.m.0.cv1.conv                                             0.513       15.401       30
+model.21.m.0.cv2.conv                                             0.503       15.085       30
+model.6.m.0.cv1.conv                                              0.502       15.046       30
+model.4.cv2.conv                                                  0.498       14.948       30
+model.22.cv3.2.1.conv                                             0.497       14.911       30
+model.6.cv2.conv                                                  0.466       13.969       30
+model.1.bn                                                        0.461       13.833       30
+model.2.cv1.bn                                                    0.456       13.694       30
+model.2.cv2.bn                                                    0.441       13.234       30
+model.15.cv2.conv                                                 0.441       13.225       30
+model.14                                                          0.403       12.097       30
+model.4.cv1.conv                                                  0.395       11.857       30
+model.22.cv2.1.1.conv                                             0.383       11.498       30
+model.12.cv2.conv                                                 0.381       11.416       30
+model.22.cv2.0.2                                                  0.380       11.397       30
+# exit: 0
