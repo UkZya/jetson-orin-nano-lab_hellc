@@ -1,4 +1,5 @@
 import time
+from pathlib import Path
 from statistics import mean
 
 import cv2
@@ -6,8 +7,9 @@ import numpy as np
 import onnxruntime as ort
 
 
-IMAGE_PATH = "/home/namuk/projects/jetson-orin-nano-lab/bus.jpg"
-ONNX_PATH = "/home/namuk/projects/jetson-orin-nano-lab/yolov8n.onnx"
+ROOT = Path(__file__).resolve().parents[2]  # 저장소 루트
+IMAGE_PATH = str(ROOT / "bus.jpg")
+ONNX_PATH = str(ROOT / "yolov8n.onnx")
 
 
 def letterbox(im, new_shape=(640, 640), color=(114, 114, 114)):

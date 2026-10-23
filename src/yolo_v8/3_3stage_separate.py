@@ -1,12 +1,14 @@
 import time
 from statistics import mean
+from pathlib import Path
 
 import cv2
 import torch
 from ultralytics import YOLO
 
 
-IMAGE_PATH = "/home/namuk/projects/jetson-orin-nano-lab/bus.jpg"
+ROOT = Path(__file__).resolve().parents[2]  # 저장소 루트
+IMAGE_PATH = str(ROOT / "bus.jpg")
 
 
 def sync_if_needed():

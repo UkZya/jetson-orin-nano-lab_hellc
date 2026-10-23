@@ -1,4 +1,5 @@
 import time
+from pathlib import Path
 from statistics import mean
 
 import cv2
@@ -10,8 +11,9 @@ except ImportError:
     from cuda import cudart
 
 
-IMAGE_PATH = "/home/namuk/projects/jetson-orin-nano-lab/bus.jpg"
-ENGINE_PATH = "/home/namuk/projects/jetson-orin-nano-lab/engines/yolov8n_fp16.engine"
+ROOT = Path(__file__).resolve().parents[2]  # 저장소 루트
+IMAGE_PATH = str(ROOT / "bus.jpg")
+ENGINE_PATH = str(ROOT / "engines" / "yolov8n_fp16.engine")
 
 
 def check_cuda(status):
