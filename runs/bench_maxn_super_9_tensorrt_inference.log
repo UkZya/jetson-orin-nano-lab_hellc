@@ -1,7 +1,7 @@
 # mode: MAXN_SUPER (nvpmodel id 2), jetson_clocks: off, rootfs: NVMe SSD
 # date: 2026-10-22T05:54:25-07:00
 # note: cuda-python 12.6.2 used (installed cuda-python 13.x is incompatible with the CUDA 12.6 driver)
-# cmd: PYTHONPATH=<cuda-python 12.6>:~/trt_shim /home/namuk/miniforge3/envs/jetson_1/bin/python src/yolo_v8/9_tensorrt_inference.py
+# cmd: PYTHONPATH=<cuda-python 12.6>:~/trt_shim ~/miniforge3/envs/jetson_1/bin/python src/yolo_v8/9_tensorrt_inference.py
 [10/22/2026-05:54:26] [TRT] [W] Using an engine plan file across different models of devices is not recommended and is likely to affect performance or even cause errors.
 [INFO] Input tensor name : images
 [INFO] Input tensor shape: (1, 3, 640, 640)

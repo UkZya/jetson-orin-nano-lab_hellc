@@ -17,13 +17,13 @@ Switched from unstable USB networking to a reliable LAN configuration.
     ip a
     ```
 *   **Static IP Configuration (via Deco App):**
-    *   **MAC Address:** `<your-MAC-address>`
+    *   **MAC Address:** `<your Jetson's MAC address>` (check with `ip link`)
     *   **Action:** Set **DHCP Reservation** for this MAC address in the TP-Link Deco app.
     *   **Result:** Verified that the Jetson always receives the same IP after rebooting.
 
 *   **SSH Workflow:**
     ```bash
-    ssh namuk@<Your-Jetson-IP>
+    ssh <user>@<Your-Jetson-IP>
     ```
 
 ---
@@ -61,6 +61,34 @@ Switched from unstable USB networking to a reliable LAN configuration.
     print(f"Shape: {x.shape}, Device: {x.device}")
     ```
     *   **Expected Output:** `torch.Size([1, 3, 224, 224]) cuda:0`
+
+---
+
+### 💾 Moving the Root Filesystem from SD to NVMe SSD
+
+The Orin Nano firmware keeps booting from the **SD card's** `/boot/extlinux/extlinux.conf`; only the root filesystem (`root=`) moves to the SSD. The SD card stays as a fallback.
+
+1.  **Format and mount the SSD** (ext4, e.g. label `ssd`, mounted at `/mnt/ssd`).
+2.  **Copy the rootfs** (about 32 GB used):
+    ```bash
+    sudo rsync -axHAWXS --numeric-ids --info=progress2 --exclude='/mnt/*' / /mnt/ssd/
+    ```
+    `-x` stays on one filesystem, so the SSD itself and `/proc`, `/sys` are not copied.
+3.  **Find the SSD partition's PARTUUID** (more reliable than `UUID=` for the kernel's `root=`):
+    ```bash
+    lsblk -o NAME,UUID,PARTUUID /dev/nvme0n1
+    ```
+4.  **Edit the SD card's `extlinux.conf`**: back it up, add an entry with `root=PARTUUID=<PARTUUID>`, make it `DEFAULT`, and keep the old entry (`root=/dev/mmcblk0p1`) as `SD fallback`.
+5.  **Reboot and verify**:
+    ```bash
+    findmnt /        # /dev/nvme0n1p1
+    ```
+6.  **Clean up** the now redundant `/mnt/ssd` line in `/etc/fstab`.
+
+**Gotchas**
+*   After booting from the SSD, `/boot/extlinux/extlinux.conf` is a **stale copy** from the time of the rsync. Editing it (or running `jetson-io.py`) has no effect, because the firmware reads the SD card's file. To change boot settings, mount the SD partition (`sudo mount /dev/mmcblk0p1 /mnt/sd`) and edit `/mnt/sd/boot/extlinux/extlinux.conf`. Kernel updates may only touch the stale copy, so re-check the SD side after updating.
+*   The conda environment and PyTorch CUDA worked unchanged after the move. The `nvpmodel` setting (MAXN_SUPER) also persisted across reboots from the SSD.
+*   Keep the SD fallback entry and its card for a few days until the SSD boot proves stable.
 
 ---
 

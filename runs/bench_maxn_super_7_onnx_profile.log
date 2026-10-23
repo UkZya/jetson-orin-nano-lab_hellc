@@ -1,6 +1,6 @@
 # mode: MAXN_SUPER (nvpmodel id 2), jetson_clocks: off, rootfs: NVMe SSD
 # date: 2026-10-22T05:53:35-07:00
-# cmd: /home/namuk/miniforge3/envs/jetson_1/bin/python src/yolo_v8/7_onnx_profile.py
+# cmd: ~/miniforge3/envs/jetson_1/bin/python src/yolo_v8/7_onnx_profile.py
 [0;93m2026-10-22 05:53:35.348299944 [W:onnxruntime:Default, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
 [INFO] ONNX Runtime providers: ['AzureExecutionProvider', 'CPUExecutionProvider']
 [INFO] Using providers      : ['CPUExecutionProvider']

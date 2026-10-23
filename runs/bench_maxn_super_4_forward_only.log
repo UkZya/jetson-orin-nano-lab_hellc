@@ -1,6 +1,6 @@
 # mode: MAXN_SUPER (nvpmodel id 2), jetson_clocks: off, rootfs: NVMe SSD
 # date: 2026-10-22T05:53:03-07:00
-# cmd: /home/namuk/miniforge3/envs/jetson_1/bin/python src/yolo_v8/4_forward_only.py
+# cmd: ~/miniforge3/envs/jetson_1/bin/python src/yolo_v8/4_forward_only.py
 [INFO] Device        : cuda
 [INFO] Input shape   : (1, 3, 640, 640)
 [INFO] Warmup iters  : 20

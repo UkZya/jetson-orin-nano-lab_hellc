@@ -1,7 +1,7 @@
 # mode: MAXN_SUPER (nvpmodel id 2), jetson_clocks: off, rootfs: NVMe SSD
 # date: 2026-10-22T05:53:23-07:00
-# cmd: /home/namuk/miniforge3/envs/jetson_1/bin/python src/yolo_v8/6_profiler.py
-/home/namuk/.local/lib/python3.10/site-packages/torch/profiler/profiler.py:217: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+# cmd: ~/miniforge3/envs/jetson_1/bin/python src/yolo_v8/6_profiler.py
+~/.local/lib/python3.10/site-packages/torch/profiler/profiler.py:217: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
   _warn_once(
 
 === Pretty Op-wise Profiling (Top 15) ===

@@ -1,6 +1,6 @@
 # mode: MAXN_SUPER (nvpmodel id 2), jetson_clocks: off, rootfs: NVMe SSD
 # date: 2026-10-22T05:52:54-07:00
-# cmd: /home/namuk/miniforge3/envs/jetson_1/bin/python src/yolo_v8/3_3stage_separate.py
+# cmd: ~/miniforge3/envs/jetson_1/bin/python src/yolo_v8/3_3stage_separate.py
 [INFO] Warmup: 10 iterations
 [INFO] Measure: 50 iterations
 
